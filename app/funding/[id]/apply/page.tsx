@@ -173,7 +173,7 @@ export default function FundingApplicationPage() {
 
       const newApplication: Application = {
         id: Date.now().toString(),
-        prototypeId: formData.prototypeId,
+        startupId: formData.prototypeId,
         opportunityId: params.id as string,
         innovatorId: session.id,
         innovatorName: session.name,
