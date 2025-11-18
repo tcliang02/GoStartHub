@@ -92,31 +92,31 @@ export default function DashboardPage() {
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">Welcome back, {user.name}!</h1>
-              <p className="text-xl text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4 mb-4">
+            <div className="flex-1">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">Welcome back, {user.name}!</h1>
+              <p className="text-lg sm:text-xl text-muted-foreground">
                 Manage your startups and track your innovation journey
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <Button
                 variant="outline"
-                className="flex items-center gap-2 relative"
+                className="flex items-center gap-2 relative flex-1 sm:flex-initial"
                 onClick={() => setShowNotifications(!showNotifications)}
               >
                 <Bell className="h-4 w-4" />
-                Notifications
+                <span className="hidden sm:inline">Notifications</span>
                 {user && storage.getNotifications(user.id).filter((n: any) => !n.read).length > 0 && (
                   <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                     {storage.getNotifications(user.id).filter((n: any) => !n.read).length}
                   </span>
                 )}
               </Button>
-              <Link href="/subscription">
-                <Button variant="outline" className="flex items-center gap-2">
+              <Link href="/subscription" className="flex-1 sm:flex-initial">
+                <Button variant="outline" className="flex items-center gap-2 w-full sm:w-auto">
                   <Crown className="h-4 w-4" />
-                  Subscription
+                  <span className="hidden sm:inline">Subscription</span>
                 </Button>
               </Link>
             </div>
@@ -133,13 +133,13 @@ export default function DashboardPage() {
           {subscriptionUsage && (
             <Card className="border-2 border-primary/20 mb-6">
               <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <Crown className="h-5 w-5 text-primary" />
-                      <span className="font-semibold">{subscriptionUsage.plan} Plan</span>
+                      <span className="font-semibold text-base sm:text-lg">{subscriptionUsage.plan} Plan</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm">
                       <div>
                         <span className="text-muted-foreground">Startups: </span>
                         <span className="font-semibold">
@@ -155,8 +155,8 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   {subscriptionUsage.tier === 'free' && (
-                    <Link href="/subscription">
-                      <Button size="sm">Upgrade</Button>
+                    <Link href="/subscription" className="w-full sm:w-auto">
+                      <Button size="sm" className="w-full sm:w-auto">Upgrade</Button>
                     </Link>
                   )}
                 </div>
@@ -171,7 +171,7 @@ export default function DashboardPage() {
             <TrendingUp className="h-6 w-6 text-primary" />
             Overview Statistics
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <Card className="hover-lift border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-md">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
@@ -245,16 +245,16 @@ export default function DashboardPage() {
               </div>
               <Card className="border-2 border-blue-200 shadow-lg">
                 <CardHeader className="bg-gradient-to-r from-blue-50 to-white border-b-2 border-blue-200">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle className="text-2xl flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="flex-1">
+                      <CardTitle className="text-xl sm:text-2xl flex items-center gap-2">
                         <TrendingUp className="h-5 w-5 text-blue-600" />
                         Innovation Projects
                       </CardTitle>
-                      <CardDescription className="text-base mt-1">Manage and track your startup projects</CardDescription>
+                      <CardDescription className="text-sm sm:text-base mt-1">Manage and track your startup projects</CardDescription>
                     </div>
-                    <Link href="/startups/new">
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                    <Link href="/startups/new" className="w-full sm:w-auto">
+                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto">
                         <Plus className="mr-2 h-4 w-4" />
                         Add Startup
                       </Button>
@@ -330,16 +330,16 @@ export default function DashboardPage() {
                 </div>
                 <Card className="border-2 border-purple-200 shadow-lg">
                   <CardHeader className="bg-gradient-to-r from-purple-50 to-white border-b-2 border-purple-200 pb-4">
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                       <div className="flex-1">
-                        <CardTitle className="text-2xl flex items-center gap-2">
+                        <CardTitle className="text-xl sm:text-2xl flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-purple-600" />
                           My Programmes
                         </CardTitle>
-                        <CardDescription className="text-base mt-2">{programmeRegistrations.length} application{programmeRegistrations.length !== 1 ? 's' : ''}</CardDescription>
+                        <CardDescription className="text-sm sm:text-base mt-2">{programmeRegistrations.length} application{programmeRegistrations.length !== 1 ? 's' : ''}</CardDescription>
                       </div>
-                      <Link href="/programmes" className="flex-shrink-0">
-                        <Button size="sm" variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
+                      <Link href="/programmes" className="w-full sm:w-auto">
+                        <Button size="sm" variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50 w-full sm:w-auto">
                           Browse
                         </Button>
                       </Link>

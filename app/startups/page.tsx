@@ -108,10 +108,10 @@ export default function StartupsPage() {
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <Badge variant="secondary" className="mb-4">Innovation Showcase</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Discover Startups</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="mb-6 sm:mb-8">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">Innovation Showcase</Badge>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Discover Startups</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Explore innovative startups from young innovators across Malaysia
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function StartupsPage() {
           </div>
 
           {/* Project Type, Stage, and Sort Filters */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div>
               <label className="text-sm font-medium mb-2 block">Project Type</label>
               <div className="flex flex-wrap gap-2">

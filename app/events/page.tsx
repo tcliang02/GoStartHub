@@ -154,8 +154,8 @@ export default function EventsPage() {
           <div className="space-y-6">
             {filteredEvents.map((event) => (
               <Card key={event.id} className="hover-lift border-2 hover:border-primary/50 transition-all">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                  <div className="md:col-span-1 p-6 border-r bg-muted/30 flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+                  <div className="md:col-span-1 p-4 md:p-6 border-r-0 md:border-r bg-muted/30 flex flex-col">
                     <div className="text-center mb-4">
                       <div className="text-3xl font-bold text-primary mb-1">
                         {new Date(event.date).getDate()}
@@ -181,17 +181,17 @@ export default function EventsPage() {
                     )}
                   </div>
 
-                  <div className="md:col-span-3 p-6">
+                  <div className="md:col-span-3 p-4 md:p-6">
                     <CardHeader className="p-0 mb-4">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Badge variant="outline">{getTypeLabel(event.type)}</Badge>
-                            <Badge variant={getStatusColor(event.status)}>{event.status}</Badge>
-                            <Badge variant="secondary">{event.format}</Badge>
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <Badge variant="outline" className="text-xs">{getTypeLabel(event.type)}</Badge>
+                            <Badge variant={getStatusColor(event.status)} className="text-xs">{event.status}</Badge>
+                            <Badge variant="secondary" className="text-xs">{event.format}</Badge>
                           </div>
-                          <CardTitle className="text-2xl mb-2">{event.title}</CardTitle>
-                          <CardDescription className="text-base">{event.description}</CardDescription>
+                          <CardTitle className="text-xl sm:text-2xl mb-2">{event.title}</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">{event.description}</CardDescription>
                         </div>
                       </div>
                     </CardHeader>

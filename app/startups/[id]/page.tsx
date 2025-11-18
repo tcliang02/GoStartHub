@@ -114,7 +114,7 @@ export default function StartupDetailPage() {
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <CardTitle className="text-4xl">{startup.title}</CardTitle>
+                  <CardTitle className="text-2xl sm:text-3xl md:text-4xl">{startup.title}</CardTitle>
                   {startup.projectType && (
                     <Badge 
                       variant="default" 
@@ -150,17 +150,17 @@ export default function StartupDetailPage() {
                     <span className="font-medium">{startup.companyName}</span>
                   </div>
                 )}
-                <CardDescription className="text-lg">{startup.description}</CardDescription>
+                <CardDescription className="text-base sm:text-lg">{startup.description}</CardDescription>
               </div>
             </div>
 
             {/* Views, Likes, Like Button, and Social Sharing */}
-            <div className="flex items-center justify-between gap-6 mb-6 pb-4 border-b flex-wrap">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 rounded-lg border border-blue-200">
-                  <Eye className="h-5 w-5 text-blue-600" />
-                  <span className="text-lg font-bold text-blue-700">{startup.views || 0}</span>
-                  <span className="text-sm text-blue-600 font-medium">views</span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b">
+              <div className="flex items-center gap-4 sm:gap-6">
+                <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-blue-50 rounded-lg border border-blue-200">
+                  <Eye className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <span className="text-base sm:text-lg font-bold text-blue-700">{startup.views || 0}</span>
+                  <span className="text-xs sm:text-sm text-blue-600 font-medium">views</span>
                 </div>
                 <Button
                   variant={isLiked ? "default" : "outline"}
@@ -174,8 +174,8 @@ export default function StartupDetailPage() {
               </div>
               
               {/* Social Sharing Buttons */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground font-medium mr-2">Share:</span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs sm:text-sm text-muted-foreground font-medium mr-1 sm:mr-2 hidden sm:inline">Share:</span>
                 <Button
                   variant="outline"
                   size="sm"
@@ -227,7 +227,7 @@ export default function StartupDetailPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
               <div>
                 <div className="text-sm text-muted-foreground mb-1">Category</div>
                 <Badge variant="outline">{startup.category}</Badge>
@@ -279,7 +279,7 @@ export default function StartupDetailPage() {
 
         {/* Detailed Information Tabs */}
         <Tabs defaultValue="profile" className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5 overflow-x-auto">
             <TabsTrigger value="profile">Profile</TabsTrigger>
             <TabsTrigger value="team">Team</TabsTrigger>
             <TabsTrigger value="financials">Financials</TabsTrigger>

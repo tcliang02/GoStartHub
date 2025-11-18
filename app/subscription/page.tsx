@@ -135,9 +135,9 @@ export default function SubscriptionPage() {
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Choose Your Plan</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Choose Your Plan</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Select the perfect subscription plan to unlock your innovation potential
           </p>
         </div>
@@ -166,7 +166,7 @@ export default function SubscriptionPage() {
           </Card>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
           {plans.map((plan) => {
             const isCurrentPlan = currentSubscription?.tier === plan.id;
             const isPro = plan.id === 'pro';
@@ -188,7 +188,7 @@ export default function SubscriptionPage() {
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     {getPlanIcon(plan.id)}
-                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                    <CardTitle className="text-xl sm:text-2xl">{plan.name}</CardTitle>
                   </div>
                   {plan.recommendedFor && (
                     <div className="mb-3">
@@ -212,24 +212,24 @@ export default function SubscriptionPage() {
                     {plan.price > 0 && plan.priceUSD ? (
                       <>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-bold text-primary">
+                          <span className="text-4xl sm:text-5xl font-bold text-primary">
                             ${plan.priceUSD}
                           </span>
-                          <span className="text-lg text-muted-foreground">USD</span>
+                          <span className="text-base sm:text-lg text-muted-foreground">USD</span>
                           {plan.interval && (
-                            <span className="text-muted-foreground">/{plan.interval}</span>
+                            <span className="text-muted-foreground text-sm sm:text-base">/{plan.interval}</span>
                           )}
                         </div>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-lg text-muted-foreground">
+                          <span className="text-base sm:text-lg text-muted-foreground">
                             RM {plan.price}
                           </span>
-                          <span className="text-sm text-muted-foreground">MYR</span>
+                          <span className="text-xs sm:text-sm text-muted-foreground">MYR</span>
                         </div>
                       </>
                     ) : (
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold">
+                        <span className="text-3xl sm:text-4xl font-bold">
                           Free
                         </span>
                       </div>
@@ -250,7 +250,7 @@ export default function SubscriptionPage() {
                   {isPro && (
                     <div className="mb-4 space-y-2">
                       <Label htmlFor={`promo-${plan.id}`}>Institution Promo Code</Label>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col sm:flex-row gap-2">
                         <Input
                           id={`promo-${plan.id}`}
                           placeholder="Enter promo code"
@@ -265,12 +265,14 @@ export default function SubscriptionPage() {
                               handlePromoCodeCheck();
                             }
                           }}
+                          className="flex-1"
                         />
                         <Button
                           type="button"
                           variant="outline"
                           onClick={handlePromoCodeCheck}
                           size="sm"
+                          className="w-full sm:w-auto"
                         >
                           Verify
                         </Button>
@@ -322,18 +324,18 @@ export default function SubscriptionPage() {
 
         <Card className="border-4 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 shadow-lg">
           <CardHeader className="bg-primary/10 border-b-2 border-primary/20">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary rounded-lg">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <div className="p-2 bg-primary rounded-lg flex-shrink-0">
                 <Zap className="h-6 w-6 text-primary-foreground" />
               </div>
-              <div>
-                <CardTitle className="text-3xl flex items-center gap-2">
+              <div className="flex-1">
+                <CardTitle className="text-2xl sm:text-3xl flex flex-wrap items-center gap-2">
                   On-Demand Purchases
-                  <Badge variant="default" className="ml-2 bg-primary text-primary-foreground">
+                  <Badge variant="default" className="bg-primary text-primary-foreground">
                     Available Now
                   </Badge>
                 </CardTitle>
-                <CardDescription className="text-base mt-2">
+                <CardDescription className="text-sm sm:text-base mt-2">
                   Need more? Purchase individual items without upgrading your subscription
                 </CardDescription>
               </div>
@@ -346,14 +348,14 @@ export default function SubscriptionPage() {
                   <div className="p-3 bg-blue-100 rounded-lg">
                     <TrendingUp className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold">Additional Startup Listing</h3>
+                  <h3 className="text-lg sm:text-xl font-bold">Additional Startup Listing</h3>
                 </div>
                 <div className="mb-4">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">
+                    <span className="text-3xl sm:text-4xl font-bold text-primary">
                       ${user ? Math.round(getOnDemandPrice(user.id, 'startup_listing') / 4.2) : 7}
                     </span>
-                    <span className="text-lg text-muted-foreground">USD</span>
+                    <span className="text-base sm:text-lg text-muted-foreground">USD</span>
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-xl text-muted-foreground">
@@ -380,14 +382,14 @@ export default function SubscriptionPage() {
                   <div className="p-3 bg-purple-100 rounded-lg">
                     <Users className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold">Additional Mentorship Token</h3>
+                  <h3 className="text-lg sm:text-xl font-bold">Additional Mentorship Token</h3>
                 </div>
                 <div className="mb-4">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-bold text-primary">
+                    <span className="text-3xl sm:text-4xl font-bold text-primary">
                       ${user ? Math.round(getOnDemandPrice(user.id, 'mentorship_token') / 4.2) : 12}
                     </span>
-                    <span className="text-lg text-muted-foreground">USD</span>
+                    <span className="text-base sm:text-lg text-muted-foreground">USD</span>
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-xl text-muted-foreground">
