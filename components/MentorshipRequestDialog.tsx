@@ -34,7 +34,7 @@ export default function MentorshipRequestDialog({
 }: MentorshipRequestDialogProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [prototypes, setPrototypes] = useState<Prototype[]>([]);
+  const [prototypes, setPrototypes] = useState<Startup[]>([]);
   const [formData, setFormData] = useState({
     prototypeId: '',
     message: '',
@@ -61,7 +61,7 @@ export default function MentorshipRequestDialog({
     // Load user's prototypes
     const allPrototypes = storage.getPrototypes();
     const userPrototypes = allPrototypes.filter(
-      (p: Prototype) => p.innovatorId === currentSession.id
+      (p: Startup) => p.innovatorId === currentSession.id
     );
     setPrototypes(userPrototypes);
   }, [open, router, onOpenChange, mentorRequiresPayment, mentorPrice]);
