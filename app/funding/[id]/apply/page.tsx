@@ -532,7 +532,7 @@ export default function FundingApplicationPage() {
                     </h3>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="fullName">
                         Full Name as in IC/Passport <span className="text-destructive">*</span>
@@ -624,7 +624,7 @@ export default function FundingApplicationPage() {
 
                     {formData.hasRegisteredCompany && (
                       <div className="space-y-4 pl-6 border-l-2 border-primary/20">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           <div className="space-y-2">
                             <Label htmlFor="companyName">Company Name</Label>
                             <Input
@@ -772,7 +772,7 @@ export default function FundingApplicationPage() {
 
                     <div className="space-y-3">
                       <Label>Technology Area (Select all that apply)</Label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {[
                           'Artificial Intelligence & Big Data Analytics',
                           'Blockchain',
@@ -814,7 +814,7 @@ export default function FundingApplicationPage() {
 
                     <div className="space-y-3">
                       <Label>Proposed Activities in Malaysia (Select all that apply)</Label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {['Market Expansion', 'Regional Support Hub', 'Research & Development', 'Other'].map(
                           (activity) => (
                             <div key={activity} className="flex items-center space-x-2">
@@ -846,7 +846,7 @@ export default function FundingApplicationPage() {
 
                     <div className="space-y-3">
                       <Label>Industry Focus (Select all that apply)</Label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {[
                           'Energy & Green Technology',
                           'Manufacturing and Automation',
@@ -884,7 +884,7 @@ export default function FundingApplicationPage() {
                     </div>
 
                     {formData.companyStage === 'post-valuation' && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="postValuation">Post Valuation</Label>
                           <Select
