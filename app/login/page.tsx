@@ -37,6 +37,10 @@ export default function LoginPage() {
       
       storage.saveSession(demoUser);
       initializeData();
+      // Dispatch event to notify navbar
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('dreamify:auth-change'));
+      }
       router.push('/dashboard');
     };
 
@@ -85,6 +89,10 @@ export default function LoginPage() {
       if (user.id === 'demo-user' || user.email === 'demo@dreamify.com') {
         // Trigger initialization (it will check if data exists)
         initializeData();
+      }
+      // Dispatch event to notify navbar
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new Event('dreamify:auth-change'));
       }
       router.push('/dashboard');
     }

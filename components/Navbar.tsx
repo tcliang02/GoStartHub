@@ -13,9 +13,13 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const [scrolled, setScrolled] = useState(false);
   const [subscriptionTier, setSubscriptionTier] = useState<string>('Free');
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
+  // Load user session and subscription
+  const loadUserData = () => {
+    if (typeof window === 'undefined') return;
+    
+    try {
       const session = localStorage.getItem('dreamify_session');
       if (session) {
         const userData = JSON.parse(session);
@@ -38,20 +42,60 @@ export default function Navbar() {
         } else {
           setSubscriptionTier('Free');
         }
+      } else {
+        setUser(null);
+        setSubscriptionTier('Free');
       }
-
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 10);
-      };
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+    } catch (error) {
+      console.error('Error loading user data:', error);
+      setUser(null);
+      setSubscriptionTier('Free');
     }
+  };
+
+  useEffect(() => {
+    setMounted(true);
+    loadUserData();
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    // Listen for storage changes (when user logs in/out in another tab)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'dreamify_session') {
+        loadUserData();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+
+    // Listen for custom login/logout events (same-tab updates)
+    const handleAuthChange = () => {
+      loadUserData();
+    };
+    window.addEventListener('dreamify:auth-change', handleAuthChange);
+
+    // Also check periodically in case of same-tab updates (less frequent)
+    const interval = setInterval(() => {
+      loadUserData();
+    }, 2000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('dreamify:auth-change', handleAuthChange);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleLogout = () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('dreamify_session');
       setUser(null);
+      setSubscriptionTier('Free');
+      // Dispatch event to notify other components
+      window.dispatchEvent(new Event('dreamify:auth-change'));
       window.location.href = '/';
     }
   };
@@ -102,7 +146,7 @@ export default function Navbar() {
             Resources
           </Link>
 
-          {user ? (
+          {mounted && user ? (
             <div className="flex items-center space-x-4 ml-4 pl-4 border-l">
               <Link href="/subscription" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <Crown className="h-4 w-4" />
@@ -117,7 +161,7 @@ export default function Navbar() {
                 Logout
               </Button>
             </div>
-          ) : (
+          ) : mounted ? (
             <div className="flex items-center space-x-4 ml-4 pl-4 border-l">
               <Link href="/login">
                 <Button variant="ghost" size="sm">Login</Button>
@@ -125,6 +169,11 @@ export default function Navbar() {
               <Link href="/register">
                 <Button size="sm">Sign Up</Button>
               </Link>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-4 ml-4 pl-4 border-l">
+              <div className="h-9 w-16 bg-muted animate-pulse rounded"></div>
+              <div className="h-9 w-20 bg-muted animate-pulse rounded"></div>
             </div>
           )}
         </div>
@@ -160,7 +209,7 @@ export default function Navbar() {
             <Link href="/resources" className="block text-sm font-medium hover:text-primary transition-colors">
               Resources
             </Link>
-            {user ? (
+            {mounted && user ? (
               <>
                 <Link href="/subscription" className="flex items-center gap-1.5 block text-sm font-medium hover:text-primary transition-colors">
                   <Crown className="h-4 w-4" />
@@ -174,7 +223,7 @@ export default function Navbar() {
                   Logout
                 </Button>
               </>
-            ) : (
+            ) : mounted ? (
               <>
                 <Link href="/login">
                   <Button variant="ghost" size="sm" className="w-full">Login</Button>
@@ -183,7 +232,7 @@ export default function Navbar() {
                   <Button size="sm" className="w-full">Sign Up</Button>
                 </Link>
               </>
-            )}
+            ) : null}
           </div>
         </div>
       )}
