@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge';
 
 export default function PrototypeDetailPage() {
   const params = useParams();
-  const [prototype, setPrototype] = useState<Prototype | null>(null);
+  const [prototype, setPrototype] = useState<Startup | null>(null);
 
   useEffect(() => {
     const prototypes = storage.getPrototypes();
