@@ -48,7 +48,7 @@ export default function StartupsPage() {
     if (projectTypeFilter !== 'all') {
       filtered = filtered.filter(s => {
         if (projectTypeFilter === 'uni') {
-          return s.projectType === 'university' || s.university !== undefined;
+          return s.projectType === 'uni' || s.university !== undefined;
         }
         return s.projectType === projectTypeFilter;
       });
