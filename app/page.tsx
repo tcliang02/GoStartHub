@@ -52,7 +52,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://blog.uber-cdn.com/cdn-cgi/image/width=2160,quality=80,onerror=redirect,format=auto/wp-content/uploads/sites/353/2016/01/CityNight.gif)',
+            backgroundImage: 'url(/images/hero-background.gif)',
           }}
         />
         {/* Light overlay for text readability only */}
