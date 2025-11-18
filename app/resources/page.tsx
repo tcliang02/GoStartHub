@@ -107,18 +107,18 @@ export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 mb-2">
-            <BookOpen className="h-6 w-6" />
-            <h1 className="text-4xl md:text-5xl font-bold">Resource Library</h1>
+            <BookOpen className="h-5 w-5 sm:h-6 sm:w-6" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">Resource Library</h1>
           </div>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Guides, templates, and resources to help you succeed
           </p>
         </div>
 
         {/* Filters */}
-        <div className="mb-8 flex flex-wrap gap-4">
+        <div className="mb-6 sm:mb-8 space-y-4">
           <div>
             <label className="text-sm font-medium mb-2 block">Category</label>
             <div className="flex flex-wrap gap-2">
@@ -128,6 +128,7 @@ export default function ResourcesPage() {
                   variant={selectedCategory === cat ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedCategory(cat)}
+                  className="text-xs sm:text-sm"
                 >
                   {cat}
                 </Button>
@@ -143,6 +144,7 @@ export default function ResourcesPage() {
                   variant={selectedType === type ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedType(type as any)}
+                  className="text-xs sm:text-sm"
                 >
                   {type.charAt(0).toUpperCase() + type.slice(1)}
                 </Button>
@@ -163,7 +165,7 @@ export default function ResourcesPage() {
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-lg">{resource.title}</CardTitle>
+                      <CardTitle className="text-base sm:text-lg">{resource.title}</CardTitle>
                       <Badge variant="outline" className="mt-2">
                         {resource.category}
                       </Badge>

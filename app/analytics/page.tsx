@@ -92,27 +92,28 @@ export default function AnalyticsPage() {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
   return (
-    <div className="min-h-screen bg-background py-8">
+    <div className="min-h-screen bg-background py-6 sm:py-8">
       <div className="container mx-auto px-4 max-w-7xl">
         <Link href="/dashboard">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-4 sm:mb-6">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Dashboard
+            <span className="hidden sm:inline">Back to Dashboard</span>
+            <span className="sm:hidden">Back</span>
           </Button>
         </Link>
 
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 mb-2">
-            <BarChart3 className="h-6 w-6" />
-            <h1 className="text-4xl md:text-5xl font-bold">Analytics Dashboard</h1>
+            <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">Analytics Dashboard</h1>
           </div>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Track your startup performance and engagement metrics
           </p>
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Card className="border-2">
             <CardHeader>
               <CardTitle className="text-sm font-medium text-muted-foreground">Total Views</CardTitle>

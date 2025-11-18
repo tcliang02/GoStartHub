@@ -71,10 +71,10 @@ export default function ProgrammesPage() {
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <Badge variant="secondary" className="mb-4">Programmes</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Innovation Programmes</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="mb-6 sm:mb-8">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">Programmes</Badge>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Innovation Programmes</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Join structured programmes designed to help you grow from idea to startup
           </p>
         </div>
@@ -185,8 +185,8 @@ export default function ProgrammesPage() {
                   <div className="flex items-start justify-between mb-2">
                     <Badge variant="outline">{getTypeLabel(programme.type)}</Badge>
                   </div>
-                  <CardTitle className="text-xl line-clamp-2">{programme.title}</CardTitle>
-                  <CardDescription className="line-clamp-3">{programme.description}</CardDescription>
+                  <CardTitle className="text-lg sm:text-xl line-clamp-2">{programme.title}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base line-clamp-3">{programme.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 space-y-3">
                   <div className="space-y-2 text-sm">

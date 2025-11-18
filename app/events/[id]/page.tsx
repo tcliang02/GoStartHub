@@ -87,13 +87,13 @@ export default function EventDetailPage() {
                   </Badge>
                   <Badge variant="secondary">{event.format}</Badge>
                 </div>
-                <CardTitle className="text-4xl mb-4">{event.title}</CardTitle>
-                <CardDescription className="text-lg">{event.description}</CardDescription>
+                <CardTitle className="text-2xl sm:text-3xl md:text-4xl mb-4">{event.title}</CardTitle>
+                <CardDescription className="text-base sm:text-lg">{event.description}</CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
               <div className="space-y-3">
                 <div className="flex items-center">
                   <Calendar className="h-5 w-5 mr-2 text-primary" />

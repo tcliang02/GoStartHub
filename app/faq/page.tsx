@@ -164,10 +164,10 @@ export default function FAQPage() {
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">Help Center</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">Help Center</Badge>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Find answers to common questions about Dreamify
           </p>
         </div>
@@ -207,7 +207,7 @@ export default function FAQPage() {
                         {faq.category}
                       </Badge>
                     </div>
-                    <CardTitle className="text-lg">{faq.question}</CardTitle>
+                    <CardTitle className="text-base sm:text-lg">{faq.question}</CardTitle>
                   </div>
                   <div className="flex-shrink-0">
                     {openItems.has(index) ? (

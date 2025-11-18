@@ -41,10 +41,10 @@ export default function FundingPage() {
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <Badge variant="secondary" className="mb-4">Funding Hub</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Funding Opportunities</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="mb-6 sm:mb-8">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">Funding Hub</Badge>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Funding Opportunities</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Discover funding opportunities for your innovative startups
           </p>
         </div>
@@ -87,18 +87,18 @@ export default function FundingPage() {
             {filteredOpportunities.map((opportunity) => (
               <Card key={opportunity.id} className="hover-lift border-2 hover:border-primary/50 transition-all">
                 <CardHeader>
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-3">
                     <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">{opportunity.title}</CardTitle>
-                      <CardDescription className="text-base">{opportunity.description}</CardDescription>
+                      <CardTitle className="text-xl sm:text-2xl mb-2">{opportunity.title}</CardTitle>
+                      <CardDescription className="text-sm sm:text-base">{opportunity.description}</CardDescription>
                     </div>
-                    <Badge variant={opportunity.status === 'open' ? 'default' : 'secondary'}>
+                    <Badge variant={opportunity.status === 'open' ? 'default' : 'secondary'} className="flex-shrink-0">
                       {opportunity.status}
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6">
                     <div className="flex items-center">
                       <DollarSign className="h-4 w-4 mr-2 text-primary" />
                       <span className="font-semibold">RM {opportunity.amount.toLocaleString()}</span>
@@ -122,16 +122,16 @@ export default function FundingPage() {
                     </ul>
                   </div>
                 </CardContent>
-                <CardFooter className="flex items-center justify-between">
-                  <div className="text-sm text-muted-foreground">
+                <CardFooter className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     <span>Provider: {opportunity.providerName}</span>
-                    <span className="ml-4">
+                    <span className="ml-2 sm:ml-4">
                       {opportunity.applications.length} application(s)
                     </span>
                   </div>
                   {opportunity.status === 'open' && (
-                    <Link href={`/funding/${opportunity.id}/apply`}>
-                      <Button>
+                    <Link href={`/funding/${opportunity.id}/apply`} className="w-full sm:w-auto">
+                      <Button className="w-full sm:w-auto">
                         Apply Now
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
