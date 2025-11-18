@@ -556,7 +556,7 @@ export const storage = {
     if (typeof window === 'undefined') return;
     localStorage.setItem(STORAGE_KEYS.STARTUPS, JSON.stringify(startups));
     // Also save to legacy key for backward compatibility
-    localStorage.setItem(STORAGE_KEYS.PROTOTYPES, JSON.stringify(startups));
+    localStorage.setItem('dreamify_prototypes', JSON.stringify(startups));
   },
   
   // Legacy support - map prototypes to startups
