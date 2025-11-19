@@ -1,17 +1,17 @@
-# PowerShell script to upload Dreamify to GitHub
+# PowerShell script to upload GoStartHub to GitHub
 # Make sure Git is installed first: https://git-scm.com/download/win
 
 Write-Host "Initializing Git repository..." -ForegroundColor Green
 git init
 
 Write-Host "Adding remote repository..." -ForegroundColor Green
-git remote add origin https://github.com/tcliang02/Dreamify.git
+git remote add origin https://github.com/tcliang02/GoStartHub.git
 
 Write-Host "Adding all files..." -ForegroundColor Green
 git add .
 
 Write-Host "Creating initial commit..." -ForegroundColor Green
-git commit -m "Initial commit: Dreamify platform"
+git commit -m "Initial commit: GoStartHub platform"
 
 Write-Host "Pushing to GitHub..." -ForegroundColor Green
 git branch -M main

@@ -33,12 +33,12 @@ You can download the code in two ways:
 
 **Option A: Using Git (Recommended)**
 ```bash
-git clone https://github.com/tcliang02/Dreamify.git
-cd Dreamify
+git clone https://github.com/tcliang02/GoStartHub.git
+cd GoStartHub
 ```
 
 **Option B: Download as ZIP**
-1. Go to https://github.com/tcliang02/Dreamify
+1. Go to https://github.com/tcliang02/GoStartHub
 2. Click the green "Code" button
 3. Select "Download ZIP"
 4. Extract the ZIP file to your desired location
