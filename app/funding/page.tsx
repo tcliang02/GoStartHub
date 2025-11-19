@@ -152,7 +152,7 @@ export default function FundingPage() {
                   <div className="mb-4">
                     <div className="text-sm font-semibold mb-2">Requirements:</div>
                     <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                      {opportunity.requirements.map((req, idx) => (
+                      {opportunity.requirements.map((req: string, idx: number) => (
                         <li key={idx}>{req}</li>
                       ))}
                     </ul>
