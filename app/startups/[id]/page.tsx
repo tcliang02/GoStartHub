@@ -744,7 +744,6 @@ export default function StartupDetailPage() {
                         src={`${startup.pitchPdf}#toolbar=1&navpanes=1&scrollbar=1`}
                         className="w-full h-[600px]"
                         title="Pitch PDF"
-                        type="application/pdf"
                       />
                     </div>
                     <div className="flex items-center gap-4">
